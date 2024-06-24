@@ -10,6 +10,8 @@ export default function Footer() {
         <span className="font-semibold">About this website:</span> Built with
         React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS,
         Framer Motion, React Email & Resend, Vercel hosting.
+        <br />
+        Chatbot built with Flask and LlamaIndex, Google Cloud Run hosting. Check Projects
       </p>
     </footer>
   );
