@@ -2,6 +2,7 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 
 import fyldrop from "@/public/fyldrop.png";
+import chatbot from "@/public/chatbot.png"
 import polartrace from "@/public/polartrace.png";
 import chat from "@/public/chat.png";
 import eduly from "@/public/eduly.png";
@@ -52,6 +53,13 @@ export const projectsData = [
     imageUrl: fyldrop,
   },
   {
+    title: "Chatbot",
+    url: "https://github.com/saaheerpurav/chatbot",
+    description: "Developed a chatbot using Flask and LlamaIndex. Integrable into any website as an iframe for seamless user experience.",
+    tags: ["Flask", "LlamaIndex", "Tailwind CSS", "Docker", "Google Cloud Run", "AWS S3"],
+    imageUrl: chatbot,
+  },
+  {
     title: "PolarTrace",
     url: "https://www.polartrace.com",
     description: "Built a PDF comparison tool to compare PDF documents side-by-side instantly, highlighting the created, deleted and modified lines.",
@@ -59,18 +67,18 @@ export const projectsData = [
     imageUrl: polartrace,
   },
   {
-    title: "Realtime Chat",
-    url: "https://realtime-web-chat.glitch.me",
-    description: "Built a real-time web chat application that enables seamless communication among users in chat rooms.",
-    tags: ["Flask", "Python", "MySQL", "Socket.IO", "HTML", "CSS"],
-    imageUrl: chat,
-  },
-  {
     title: "EduLy",
     url: "https://github.com/saaheerpurav/school-management",
     description: "Developed a school management app that facilitates communication and cooperation between a school administrator and teachers",
     tags: ["Flutter", "Dart", "Firebase", "Android"],
     imageUrl: eduly,
+  },
+  {
+    title: "Realtime Chat",
+    url: "https://realtime-web-chat.glitch.me",
+    description: "Built a real-time web chat application that enables seamless communication among users in chat rooms.",
+    tags: ["Flask", "Python", "MySQL", "Socket.IO", "HTML", "CSS"],
+    imageUrl: chat,
   },
 ] as const;
 
@@ -88,10 +96,15 @@ export const skillsData = [
   "MySQL",
   "PostgreSQL",
   "Firebase",
+  "AWS",
+  "Google Cloud",
   "Express",
   "Electron",
   "Python",
+  "OpenAI",
   "OpenCV",
+  "LlamaIndex",
+  "Docker",
   "Selenium",
   "Pandas",
   "Flask",

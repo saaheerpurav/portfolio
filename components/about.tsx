@@ -19,6 +19,7 @@ export default function About() {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
+        Currently in my first year of pursuing a bachelor's degree in  <span className="font-medium">Computer Science</span>.
         Dedicated and versatile <span className="font-medium">Full Stack Developer</span> with expertise in creating&nbsp;
         <span className="font-medium">web, desktop, and mobile</span> applications.
         Proficient in a wide range of technologies and frameworks, with a proven track record of delivering&nbsp;
