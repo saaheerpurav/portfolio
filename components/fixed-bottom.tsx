@@ -5,12 +5,14 @@ import React, { useState, useEffect } from "react";
 import { BsMoon, BsSun } from "react-icons/bs";
 import { TbMessageChatbot, TbChevronDown } from "react-icons/tb";
 
-const chatbotUrl = "https://chatbot.saaheerpurav.com"
+//const chatbotUrl = "https://chatbot.saaheerpurav.com"
+const chatbotUrl = "http://127.0.0.1:5000"
 
 export default function FixedBottom() {
   const { theme, toggleTheme } = useTheme();
   const [windowVis, setWindowVis] = useState(false);
   const [alertVis, setAlertVis] = useState(true);
+  const [bubbleVis, setBubbleVis] = useState(false);
 
   const closeIframe: any = (e: any) => {
     if (e.data === "iframe_close") setWindowVis(false);
@@ -27,17 +29,15 @@ export default function FixedBottom() {
   return (
     <>
       <div className="fixed bottom-0 right-0 md:bottom-[88px] md:right-5 z-[999]" style={{ display: windowVis ? "block" : "none" }}>
-        <iframe src={`${chatbotUrl}/chatbot-iframe?id=c5d8f014`} className="h-[100vh] md:h-[60vh] w-[100vw] md:w-96" id="iframe-window"></iframe>
+        <iframe src={`${chatbotUrl}/chatbot-iframe?id=c5d8f014`} className="h-[100vh] md:h-[60vh] w-[100vw] md:w-96" id="iframe-window" onLoad={() => { setBubbleVis(true); }}></iframe>
       </div>
 
-      <div className="fixed bottom-5 right-5 grid gap-4 grid-cols-2">
+      <div className="fixed bottom-5 right-5 flex flex-row">
         {
-          alertVis
+          alertVis && bubbleVis
             ? <div id="alert-5" className="absolute bottom-[4.5rem] right-[1.5rem] flex flex-row items-center px-4 py-2 whitespace-nowrap rounded-lg bg-blue-500 text-white" role="alert">
               <div className="absolute right-0 bottom-[-15px] w-0 h-0 border-[25px] border-l-[25px] rounded border-r-[0px] border-transparent border-t-blue-500 border-b-0 z-[999]"></div>
               <p className="mr-4">Ask me anything!</p>
-
-
 
               <button className="bg-blue-500" onClick={() => { setAlertVis(false); }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -55,14 +55,19 @@ export default function FixedBottom() {
           {theme === "light" ? <BsSun /> : <BsMoon />}
         </button>
 
-        <button className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
-          onClick={() => { setWindowVis(!windowVis); setAlertVis(false); }} title="Chatbot">
-          {
-            windowVis
-              ? <TbChevronDown size={23} />
-              : <TbMessageChatbot size={23} />
-          }
-        </button>
+        {
+          bubbleVis
+            ? <button className="bg-white w-[3rem] h-[3rem] ml-4 bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+              onClick={() => { setWindowVis(!windowVis); setAlertVis(false); }} title="Chatbot">
+              {
+                windowVis
+                  ? <TbChevronDown size={23} />
+                  : <TbMessageChatbot size={23} />
+              }
+            </button>
+            : null
+        }
+
       </div>
     </>
   );
