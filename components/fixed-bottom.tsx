@@ -5,8 +5,8 @@ import React, { useState, useEffect } from "react";
 import { BsMoon, BsSun } from "react-icons/bs";
 import { TbMessageChatbot, TbChevronDown } from "react-icons/tb";
 
-//const chatbotUrl = "https://chatbot.saaheerpurav.com"
-const chatbotUrl = "http://127.0.0.1:5000"
+const chatbotUrl = "https://chatbot.saaheerpurav.com"
+//const chatbotUrl = "http://127.0.0.1:5000"
 
 export default function FixedBottom() {
   const { theme, toggleTheme } = useTheme();
