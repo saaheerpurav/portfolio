@@ -54,7 +54,7 @@ export const projectsData = [
   },
   {
     title: "Chatbot",
-    url: "https://github.com/saaheerpurav/chatbot",
+    url: "https://chatbot.saaheerpurav.com",
     description: "Developed a chatbot using Flask and LlamaIndex. Integrable into any website as an iframe for seamless user experience.",
     tags: ["Flask", "LlamaIndex", "Tailwind CSS", "Docker", "Google Cloud Run", "AWS S3"],
     imageUrl: chatbot,
