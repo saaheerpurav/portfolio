@@ -29,6 +29,10 @@ export const links = [
     hash: "#experience",
   },
   {
+    name: "Activities",
+    hash: "#activities",
+  },
+  {
     name: "Contact",
     hash: "#contact",
   },
@@ -36,7 +40,16 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Freelancer at Fiverr",
+    title: "Lead Web Developer Intern",
+    company: "SmaxFusion",
+    location: "Manipal Institute of Technology",
+    description: "Worked on building the InternLoom (by SmaxFusion) website. Oversaw the development, coordinated communication and organized meetings.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2024 - Current",
+  },
+  {
+    title: "Freelancer",
+    company: "Fiverr",
     location: "Remote",
     description: "Built and sold custom desktop applications to clients from the United States, France, United Kingdom and Poland for Windows, MacOS and Linux operating systems.",
     icon: React.createElement(CgWorkAlt),
@@ -61,7 +74,7 @@ export const projectsData = [
   },
   {
     title: "PolarTrace",
-    url: "https://www.polartrace.com",
+    url: "https://pdf-compare.vercel.app",
     description: "Built a PDF comparison tool to compare PDF documents side-by-side instantly, highlighting the created, deleted and modified lines.",
     tags: ["Flask", "Python", "React", "Firebase", "Vercel"],
     imageUrl: polartrace,
@@ -98,6 +111,7 @@ export const skillsData = [
   "Firebase",
   "AWS",
   "Google Cloud",
+  "Prisma",
   "Express",
   "Electron",
   "Python",
@@ -111,4 +125,25 @@ export const skillsData = [
   "Dart",
   "Flutter",
   "Framer Motion",
+] as const;
+
+export const activityData=[
+  {
+    title: "Head of Open Source",
+    club: "CodeX Club",
+    img: "/clubs/codex.png",
+    start: "Dec 2024",
+  },
+  {
+    title: "Head of Web Development",
+    club: "MBOSC Club",
+    img: "/clubs/mbosc.png",
+    start: "Nov 2024",
+  },
+  {
+    title: "Vice Head of IT",
+    club: "RADAR Club",
+    img: "/clubs/radar.png",
+    start: "Nov 2024",
+  },
 ] as const;
