@@ -13,6 +13,7 @@ import { useActiveSectionContext } from "@/context/active-section-context";
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  const year = (new Date().getFullYear()) - 2022;
 
   return (
     <section
@@ -64,7 +65,7 @@ export default function Intro() {
       >
         <span className="font-bold">Hello, I'm Saaheer.</span> I'm a&nbsp;
         <span className="font-bold">full-stack developer</span> with&nbsp;
-        <span className="font-bold">2 years</span> of experience. I enjoy building&nbsp;
+        <span className="font-bold">{year} years</span> of experience. I enjoy building&nbsp;
         <span className="italic">sites & apps</span>.
       </motion.h1>
 

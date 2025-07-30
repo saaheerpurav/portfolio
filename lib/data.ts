@@ -40,16 +40,18 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Lead Web Developer Intern",
+    title: "Lead Web Developer",
     company: "SmaxFusion",
+    url: "https://internloom.com",
     location: "Manipal Institute of Technology",
     description: "Worked on building the InternLoom (by SmaxFusion) website. Oversaw the development, coordinated communication and organized meetings.",
     icon: React.createElement(CgWorkAlt),
-    date: "2024 - Current",
+    date: "2024 - 2025",
   },
   {
     title: "Freelancer",
     company: "Fiverr",
+    url: "https://fiverr.com",
     location: "Remote",
     description: "Built and sold custom desktop applications to clients from the United States, France, United Kingdom and Poland for Windows, MacOS and Linux operating systems.",
     icon: React.createElement(CgWorkAlt),

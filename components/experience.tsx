@@ -9,7 +9,7 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 
 import { FaLocationDot } from "react-icons/fa6";
-import { CgWorkAlt } from "react-icons/cg";
+import { CgWorkAlt, CgExternal } from "react-icons/cg";
 
 import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
@@ -51,7 +51,9 @@ export default function Experience() {
 
               <div className="flex flex-row items-center my-2">
                 <CgWorkAlt />
-                <p className="font-normal !mt-0 pl-2">{item.company}</p>
+                <a href={item.url} target="_blank" className="font-normal !mt-0 pl-2 flex items-center">{item.company}
+                  <span className="ml-1"><CgExternal size={20} /></span>
+                </a>
               </div>
 
               <div className="flex flex-row items-center my-2">
