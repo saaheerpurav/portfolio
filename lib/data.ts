@@ -62,7 +62,7 @@ export const experiencesData = [
 export const projectsData = [
   {
     title: "FylDrop",
-    url: "https://fyldrop.com",
+    url: "https://file-transfer-66619.web.app",
     description: "Built a desktop app to share files to any device connected on a local network wirelessly, simply by scanning a QR code",
     tags: ["React", "Electron", "Express", "Firebase", "Paypal"],
     imageUrl: fyldrop,
