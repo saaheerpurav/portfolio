@@ -44,7 +44,7 @@ export const experiencesData = [
     title: "Lead Web Developer",
     company: "SmaxFusion",
     url: "https://internloom.com",
-    location: "Manipal Institute of Technology",
+    location: "Manipal Institute of Technology, Bengaluru",
     description:
       "Worked on building the InternLoom (by SmaxFusion) website. Oversaw the development, coordinated communication and organized meetings.",
     icon: React.createElement(CgWorkAlt),
@@ -152,6 +152,30 @@ export const skillsData = [
   "Flutter",
   "Framer Motion",
 ] as const;
+
+export const hackathonData = [
+  {
+    title: "Hack-a-bot by NEURA AI",
+    pos: "1st Place",
+    loc: "Manipal Institute of Technology, Bengaluru",
+    date: "1st Nov 2025",
+    imgs: [
+      "/hackathons/1a.png",
+      "/hackathons/1b.png"
+    ]
+  },
+  {
+    title: "404 - Beyond the Limit by THC x DCC",
+    pos: "Most Innovative Solution",
+    loc: "Jai Hind College, Mumbai",
+    date: "11th Dec 2025",
+    imgs: [
+      "/hackathons/2a.png",
+      "/hackathons/2b.png",
+      "/hackathons/2c.png"
+    ]
+  },
+]
 
 export const activityData = [
   {
