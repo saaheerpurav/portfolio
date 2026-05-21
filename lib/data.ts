@@ -7,6 +7,7 @@ import polartrace from "@/public/polartrace.png";
 import chat from "@/public/chat.png";
 import eduly from "@/public/eduly.png";
 import storeai from "@/public/storeai.png";
+import { profile } from "./profile";
 
 export const links = [
   {
@@ -41,6 +42,16 @@ export const links = [
 
 export const experiencesData = [
   {
+    title: "Full-Stack Engineer",
+    company: "MentorEdge",
+    url: "https://www.mentoredge.co.in",
+    location: "Bengaluru, Karnataka, India",
+    description:
+      "Built and launched MentorEdge by Confab 360 Degree, a production ready full-stack web platform with secure authentication, route protection, third party integrations, and production infrastructure management.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Jan 2026 - Present",
+  },
+  {
     title: "Lead Web Developer",
     company: "SmaxFusion",
     url: "https://internloom.com",
@@ -58,7 +69,7 @@ export const experiencesData = [
     description:
       "Built and sold custom desktop applications to clients from the United States, France, United Kingdom and Poland for Windows, MacOS and Linux operating systems.",
     icon: React.createElement(CgWorkAlt),
-    date: "2022 - Current",
+    date: `${profile.experienceStartYear} - Current`,
   },
 ] as const;
 
@@ -160,9 +171,9 @@ export const hackathonData = [
     loc: "Manipal Institute of Technology, Bengaluru",
     date: "1st Nov 2025",
     imgs: [
-      "/hackathons/1a.png",
-      "/hackathons/1b.png"
-    ]
+      { src: "/hackathons/1a.png", portrait: false },
+      { src: "/hackathons/1b.png", portrait: false },
+    ],
   },
   {
     title: "404 - Beyond the Limit by THC x DCC",
@@ -170,12 +181,52 @@ export const hackathonData = [
     loc: "Jai Hind College, Mumbai",
     date: "11th Dec 2025",
     imgs: [
-      "/hackathons/2a.png",
-      "/hackathons/2b.png",
-      "/hackathons/2c.png"
-    ]
+      { src: "/hackathons/2a.png", portrait: false },
+      { src: "/hackathons/2b.png", portrait: false },
+      { src: "/hackathons/2c.png", portrait: false },
+    ],
   },
-]
+  {
+    title: "Prerana 2026 Hackathon",
+    pos: "1st Prize",
+    loc: "Gitam University, Bengaluru",
+    date: "23rd Jan 2026",
+    imgs: [
+      { src: "/hackathons/3a.jpeg", portrait: false },
+      { src: "/hackathons/3b.jpeg", portrait: true },
+    ],
+  },
+  {
+    title: "Hackanova 2026",
+    pos: "1st Prize",
+    loc: "NMKRV College, Bengaluru",
+    date: "27th Feb 2026",
+    imgs: [
+      { src: "/hackathons/4a.jpeg", portrait: false },
+      { src: "/hackathons/4b.jpeg", portrait: true },
+    ],
+  },
+  {
+    title: "InnovateX 4.0",
+    pos: "1st Prize",
+    loc: "Presidency University, Bengaluru",
+    date: "9th April 2026",
+    imgs: [
+      { src: "/hackathons/5a.png", portrait: false },
+      { src: "/hackathons/5b.jpeg", portrait: false },
+    ],
+  },
+  {
+    title: "MAHE Mobility Challenge 2026",
+    pos: "1st Prize",
+    loc: "Manipal Institute of Technology, Bengaluru",
+    date: "19th April 2026",
+    imgs: [
+      { src: "/hackathons/6a.jpg", portrait: false },
+      { src: "/hackathons/6b.jpeg", portrait: false },
+    ],
+  },
+] as const;
 
 export const activityData = [
   {

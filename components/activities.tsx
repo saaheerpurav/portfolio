@@ -32,7 +32,10 @@ function ImageCarousel({
   imgs,
   altPrefix = "",
 }: {
-  imgs: string[];
+  imgs: readonly {
+    src: string;
+    portrait: boolean;
+  }[];
   altPrefix?: string;
 }) {
   const [idx, setIdx] = React.useState(0);
@@ -49,13 +52,13 @@ function ImageCarousel({
           transition={{ duration: 0.35 }}
           className={`${i === idx ? "block" : "hidden"} absolute inset-0`}
         >
-          <div className="relative w-full h-full rounded-md overflow-hidden">
+          <div className="relative w-full h-full rounded-md overflow-hidden bg-black/5 dark:bg-white/5">
             <Image
-              src={img}
+              src={img.src}
               alt={`${altPrefix} image ${i + 1}`}
               fill
               priority
-              className="object-cover"
+              className={img.portrait ? "object-contain" : "object-cover"}
             />
           </div>
         </motion.div>
@@ -103,7 +106,7 @@ export default function Activities() {
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
         {hackathonData.map((item, index) => (
           <motion.li
-            className="bg-white borderBlack rounded-xl px-5 pt-3 pb-5 dark:bg-white/10 dark:text-white/80 list-none w-full mb-10 flex flex-col"
+            className="bg-white borderBlack rounded-xl px-5 pt-3 pb-5 dark:bg-white/10 dark:text-white/80 list-none w-full max-w-4xl mx-auto mb-10 flex flex-col"
             variants={fadeInAnimationVariants}
             initial="initial"
             whileInView="animate"
@@ -130,7 +133,7 @@ export default function Activities() {
 
             </div>
 
-            <div className="mt-5 w-full h-full">
+            <div className="mt-5 w-full">
               <ImageCarousel imgs={item.imgs} altPrefix={item.title} />
             </div>
           </motion.li>
@@ -144,7 +147,7 @@ export default function Activities() {
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
         {activityData.map((item, index) => (
           <motion.li
-            className="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80 list-none w-full mb-2 flex flex-row items-center"
+            className="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80 list-none w-full max-w-4xl mx-auto mb-2 flex flex-row items-center"
             variants={fadeInAnimationVariants}
             initial="initial"
             whileInView="animate"

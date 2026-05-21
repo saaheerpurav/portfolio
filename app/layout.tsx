@@ -6,12 +6,13 @@ import Footer from "@/components/footer";
 import FixedBottom from "@/components/fixed-bottom";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
+import { getProfileDescription, profile } from "@/lib/profile";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Saaheer | Personal Portfolio",
-  description: "Saaheer is a full-stack developer with 2 years of experience.",
+  title: `${profile.firstName} | Personal Portfolio`,
+  description: getProfileDescription(),
 };
 
 export default function RootLayout({

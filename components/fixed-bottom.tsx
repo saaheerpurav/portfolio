@@ -4,37 +4,65 @@ import { useTheme } from "@/context/theme-context";
 import React, { useState, useEffect } from "react";
 import { BsMoon, BsSun } from "react-icons/bs";
 import { TbMessageChatbot, TbChevronDown } from "react-icons/tb";
-
-const chatbotUrl = "https://chatbot.saaheerpurav.com"
-//const chatbotUrl = "http://127.0.0.1:5000"
+import { profile } from "@/lib/profile";
 
 export default function FixedBottom() {
   const { theme, toggleTheme } = useTheme();
   const [windowVis, setWindowVis] = useState(false);
   const [alertVis, setAlertVis] = useState(true);
-  const [bubbleVis, setBubbleVis] = useState(false);
-
-  const closeIframe: any = (e: any) => {
-    if (e.data === "iframe_close") setWindowVis(false);
-  }
+  const [isChatbotMounted, setIsChatbotMounted] = useState(false);
+  const [isChatbotLoaded, setIsChatbotLoaded] = useState(false);
+  const [isChatbotLoading, setIsChatbotLoading] = useState(false);
 
   useEffect(() => {
+    const closeIframe = (event: MessageEvent) => {
+      if (
+        event.origin === profile.chatbotUrl &&
+        event.data === "iframe_close"
+      ) {
+        setWindowVis(false);
+      }
+    };
+
     window.addEventListener("message", closeIframe);
 
     return () => {
       window.removeEventListener("message", closeIframe);
     };
-  }, [])
+  }, []);
+
+  const toggleChatbot = () => {
+    setAlertVis(false);
+    if (!isChatbotMounted) {
+      setIsChatbotMounted(true);
+      setIsChatbotLoaded(false);
+      setIsChatbotLoading(true);
+    }
+    setWindowVis((current) => !current);
+  };
 
   return (
     <>
-      <div className="fixed bottom-0 right-0 md:bottom-[88px] md:right-5 z-[999]" style={{ display: windowVis ? "block" : "none" }}>
-        <iframe src={`${chatbotUrl}/chatbot-iframe?id=c5d8f014`} className="h-[100vh] md:h-[60vh] w-[100vw] md:w-96" id="iframe-window" onLoad={() => { setBubbleVis(true); }}></iframe>
-      </div>
+      {isChatbotMounted ? (
+        <div
+          className="fixed bottom-0 right-0 md:bottom-[88px] md:right-5 z-[999]"
+          style={{ display: windowVis ? "block" : "none" }}
+        >
+          <iframe
+            src={`${profile.chatbotUrl}/chatbot-iframe?id=${profile.chatbotId}`}
+            className="h-[100vh] md:h-[60vh] w-[100vw] md:w-96"
+            id="iframe-window"
+            onLoad={() => {
+              setIsChatbotLoaded(true);
+              setIsChatbotLoading(false);
+            }}
+          ></iframe>
+        </div>
+      ) : null}
 
       <div className="fixed bottom-5 right-5 flex flex-row">
         {
-          alertVis && bubbleVis
+          alertVis
             ? <div id="alert-5" className="absolute bottom-[4.5rem] right-[1.5rem] flex flex-row items-center px-4 py-2 whitespace-nowrap rounded-lg bg-blue-500 text-white" role="alert">
               <div className="absolute right-0 bottom-[-15px] w-0 h-0 border-[25px] border-l-[25px] rounded border-r-[0px] border-transparent border-t-blue-500 border-b-0 z-[999]"></div>
               <p className="mr-4">Ask me anything!</p>
@@ -50,23 +78,31 @@ export default function FixedBottom() {
             : null
         }
 
+        {isChatbotLoading && !isChatbotLoaded ? (
+          <div className="absolute bottom-[4.5rem] right-[1.5rem] flex flex-row items-center gap-3 whitespace-nowrap rounded-lg bg-white px-4 py-2 text-gray-700 shadow-xl dark:bg-gray-950 dark:text-white">
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500 dark:border-gray-700 dark:border-t-blue-400"></div>
+            <p className="text-sm font-medium">Loading chatbot...</p>
+          </div>
+        ) : null}
+
         <button className="bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
           onClick={toggleTheme} title="Switch Theme">
           {theme === "light" ? <BsSun /> : <BsMoon />}
         </button>
 
-        {
-          bubbleVis
-            ? <button className="bg-white w-[3rem] h-[3rem] ml-4 bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
-              onClick={() => { setWindowVis(!windowVis); setAlertVis(false); }} title="Chatbot">
-              {
-                windowVis
-                  ? <TbChevronDown size={23} />
-                  : <TbMessageChatbot size={23} />
-              }
-            </button>
-            : null
-        }
+        <button
+          className="bg-white w-[3rem] h-[3rem] ml-4 bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
+          onClick={toggleChatbot}
+          title="Chatbot"
+        >
+          {isChatbotLoading && !isChatbotLoaded ? (
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500 dark:border-gray-700 dark:border-t-blue-400"></div>
+          ) : windowVis ? (
+            <TbChevronDown size={23} />
+          ) : (
+            <TbMessageChatbot size={23} />
+          )}
+        </button>
 
       </div>
     </>

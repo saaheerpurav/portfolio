@@ -51,8 +51,15 @@ export default function Experience() {
 
               <div className="flex flex-row items-center my-2">
                 <CgWorkAlt />
-                <a href={item.url} target="_blank" className="font-normal !mt-0 pl-2 flex items-center">{item.company}
-                  <span className="ml-1"><CgExternal size={20} /></span>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  className="font-normal !mt-0 pl-2 flex items-center"
+                >
+                  {item.company}
+                  <span className="ml-1">
+                    <CgExternal size={20} />
+                  </span>
                 </a>
               </div>
 

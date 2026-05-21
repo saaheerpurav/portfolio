@@ -9,11 +9,12 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { getExperienceYears, profile } from "@/lib/profile";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-  const year = (new Date().getFullYear()) - 2022;
+  const year = getExperienceYears();
 
   return (
     <section
@@ -33,7 +34,7 @@ export default function Intro() {
           >
             <Image
               src="/pfp.jpg"
-              alt="Saaheer portrait"
+              alt={`${profile.firstName} portrait`}
               width="192"
               height="192"
               quality="95"
@@ -63,8 +64,8 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Saaheer.</span> I'm a&nbsp;
-        <span className="font-bold">full-stack developer</span> with&nbsp;
+        <span className="font-bold">Hello, I'm {profile.firstName}.</span> I'm a&nbsp;
+        <span className="font-bold">{profile.role}</span> with&nbsp;
         <span className="font-bold">{year} years</span> of experience. I enjoy building&nbsp;
         <span className="italic">sites & apps</span>.
       </motion.h1>
@@ -91,7 +92,7 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/CV.pdf"
+          href={profile.cvPath}
           download
         >
           Download CV&nbsp;
@@ -100,12 +101,12 @@ export default function Intro() {
 
         <div className="flex flex-row">
           <a className="bg-white p-4 mr-2 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-            href="https://www.linkedin.com/in/saaheer-purav" target="_blank" title="LinkedIn">
+            href={profile.linkedinUrl} target="_blank" title="LinkedIn">
             <BsLinkedin />
           </a>
 
           <a className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-            href="https://github.com/saaheerpurav" target="_blank" title="Github">
+            href={profile.githubUrl} target="_blank" title="Github">
             <FaGithubSquare />
           </a>
 
