@@ -6,6 +6,7 @@ export const profile = {
   experienceStartYear: 2022,
   linkedinUrl: "https://www.linkedin.com/in/saaheer-purav",
   githubUrl: "https://github.com/saaheerpurav",
+  xUrl: "https://x.com/saaheerpurav",
   cvPath: "/CV.pdf",
   chatbotUrl: "https://chatbot.saaheerpurav.com",
   chatbotId: "c5d8f014",

@@ -11,6 +11,18 @@ import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { getExperienceYears, profile } from "@/lib/profile";
 
+function XIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 1200 1227"
+      className="h-[1.15rem] w-[1.15rem] fill-current"
+    >
+      <path d="M714.163 519.284 1160.89 0H1055.06L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.612-476.152 327.194 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894L144.011 79.694h162.604l304.797 436.204 47.468 67.894 396.236 567.216H892.512L569.165 687.854v-.026Z" />
+    </svg>
+  );
+}
+
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -71,43 +83,50 @@ export default function Intro() {
       </motion.h1>
 
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
+        className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
           delay: 0.1,
         }}
       >
-        <Link
-          href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-          onClick={() => {
-            setActiveSection("Contact");
-            setTimeOfLastClick(Date.now());
-          }}
-        >
-          Contact me here&nbsp;
-          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+          <Link
+            href="#contact"
+            className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+            onClick={() => {
+              setActiveSection("Contact");
+              setTimeOfLastClick(Date.now());
+            }}
+          >
+            Contact me here&nbsp;
+            <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
+          </Link>
 
-        <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href={profile.cvPath}
-          download
-        >
-          Download CV&nbsp;
-          <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-        </a>
+          <a
+            className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
+            href={profile.cvPath}
+            download
+          >
+            Download CV&nbsp;
+            <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
+          </a>
+        </div>
 
-        <div className="flex flex-row">
-          <a className="bg-white p-4 mr-2 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+        <div className="mt-2 flex flex-row justify-center">
+          <a className="bg-white mr-2 text-gray-700 hover:text-gray-950 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
             href={profile.linkedinUrl} target="_blank" title="LinkedIn">
-            <BsLinkedin />
+            <BsLinkedin size={20} />
           </a>
 
-          <a className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+          <a className="bg-white mr-2 text-gray-700 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
             href={profile.githubUrl} target="_blank" title="Github">
-            <FaGithubSquare />
+            <FaGithubSquare size={22} />
+          </a>
+
+          <a className="bg-white text-gray-700 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+            href={profile.xUrl} target="_blank" title="X">
+            <XIcon />
           </a>
 
         </div>
